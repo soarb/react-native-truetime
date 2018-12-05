@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/pankajkgarg/react-native-truetime.git"
+    "url": "git+ssh://git@github.com/soarb/react-native-truetime.git"
   },
   "keywords": [
     "react-native",
@@ -20,6 +20,6 @@
   "author": "Pankaj Garg",
   "license": "",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "0.57.1"
   }
 }
