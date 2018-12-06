@@ -9,8 +9,18 @@
 
 `$ react-native link react-native-truetime`
 
-### Manual installation
+### Additional Steps (iOS and CocoaPods)
 
+add 'TrueTime' to your Podfile and run `pod install`
+
+Note that this is a Swift library and most react-native projects are all in 
+Objective-C, so if you encounter link errors building the project, I've found
+that adding an empty Swift file to your project will prompt XCode to include
+an Objective-C bridge, which for me at least, fixed the linker errors. This
+at least means you don't need to uncomment use_frameworks! in your Podfile which
+fixes the issue but can break other modules e.g., React Native Firebase.
+
+### Manual installation
 
 #### Android
 
@@ -35,9 +45,6 @@
       compile project(':react-native-truetime')
       compile 'com.github.instacart.truetime-android:library-extension-rx:3.3'
   	```
-
-
-
 ## Usage
 ```javascript
 import RNTrueTime from 'react-native-truetime';
