@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/author/RNRcTest.git", :tag => "master" }
   s.source_files = "RNTrueTime/**/*.{h,m}"
   s.requires_arc = true
-
 end
 
   
