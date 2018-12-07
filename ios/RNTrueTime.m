@@ -1,5 +1,7 @@
 #import "RNTrueTime.h"
 
+@import TrueTime;
+
 @implementation RNTrueTime
 
 - (dispatch_queue_t)methodQueue
