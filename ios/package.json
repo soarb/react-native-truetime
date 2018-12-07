@@ -1,0 +1,15 @@
+{
+  "name": "rntruetime",
+  "version": "1.0.0",
+  "description": "Static library wrapping native iOS TrueTime",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "16.5.0",
+    "react-native": "0.57.1"
+  }
+}

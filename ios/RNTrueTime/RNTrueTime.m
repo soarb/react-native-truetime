@@ -1,5 +1,7 @@
 #import "RNTrueTime.h"
 
+@import TrueTime;
+
 @implementation RNTrueTime
 
 - (dispatch_queue_t)methodQueue
@@ -10,25 +12,27 @@
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(initTrueTime:(RCTPromiseResolveBlock)resolve
-                      rejecter:(RCTPromiseRejectBlock)reject)
+                  rejecter:(RCTPromiseRejectBlock)reject)
 {
     // grab reference to shared true time singleton
     TrueTimeClient *client = [TrueTimeClient sharedInstance];
     // initialise
     [client startWithPool:@[@"time.apple.com"] port:123];
     // resolve
-    resolve("");
+    resolve(@"");
 }
 
 RCT_EXPORT_METHOD(getTrueTime:(RCTPromiseResolveBlock)resolve
-                     rejecter:(RCTPromiseRejectBlock)reject)
+                  rejecter:(RCTPromiseRejectBlock)reject)
 {
+    // grab reference to shared true time singleton
+    TrueTimeClient *client = [TrueTimeClient sharedInstance];
     // grab true time without fear of user messing with their system clock
     NSDate *now = [[client referenceTime] now];
     // milliseconds since epoch
-    long ms = (floor([now timeIntervalSince1970] * 1000))
+    long ms = (floor([now timeIntervalSince1970] * 1000));
     // resolve as a string
-    NSString *msString = [NSString stringWithFormat:@"%f", ms];
+    NSString *msString = [NSString stringWithFormat:@"%ldld", ms];
     // resolve the promise
     resolve(msString);
 }

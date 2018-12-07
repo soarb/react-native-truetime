@@ -1,0 +1,65 @@
+PODS:
+  - boost-for-react-native (1.63.0)
+  - DoubleConversion (1.1.5)
+  - Folly (2016.10.31.00):
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+  - glog (0.3.4)
+  - React/Core (0.57.1):
+    - yoga (= 0.57.1.React)
+  - React/CxxBridge (0.57.1):
+    - Folly (= 2016.10.31.00)
+    - React/Core
+    - React/cxxreact
+  - React/cxxreact (0.57.1):
+    - boost-for-react-native (= 1.63.0)
+    - Folly (= 2016.10.31.00)
+    - React/jschelpers
+    - React/jsinspector
+  - React/jschelpers (0.57.1):
+    - Folly (= 2016.10.31.00)
+    - React/PrivateDatabase
+  - React/jsinspector (0.57.1)
+  - React/PrivateDatabase (0.57.1)
+  - Result (3.2.4)
+  - TrueTime (5.0.0):
+    - Result (~> 3.0)
+  - yoga (0.57.1.React)
+
+DEPENDENCIES:
+  - Folly (from `./node_modules/react-native/third-party-podspecs/Folly.podspec`)
+  - React/Core (from `./node_modules/react-native`)
+  - React/CxxBridge (from `./node_modules/react-native`)
+  - TrueTime
+  - yoga (from `./node_modules/react-native/ReactCommon/yoga`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+    - Result
+    - TrueTime
+
+EXTERNAL SOURCES:
+  Folly:
+    :podspec: "./node_modules/react-native/third-party-podspecs/Folly.podspec"
+  React:
+    :path: "./node_modules/react-native"
+  yoga:
+    :path: "./node_modules/react-native/ReactCommon/yoga"
+
+SPEC CHECKSUMS:
+  boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
+  Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
+  glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
+  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  TrueTime: 8fcd3bbbee664a46ab093ac22882eef4aab26229
+  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
+
+PODFILE CHECKSUM: 0e50582f62564422ef68745f83289d495936cac3
+
+COCOAPODS: 1.5.3

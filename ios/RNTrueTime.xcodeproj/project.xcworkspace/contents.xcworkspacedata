@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/benji/Development/react-native-truetime/ios/RNTrueTime.xcodeproj">
+      location = "self:RNTrueTime.xcodeproj">
    </FileRef>
 </Workspace>
