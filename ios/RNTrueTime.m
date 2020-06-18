@@ -11,6 +11,14 @@ static bool initialised = false;
     return dispatch_get_main_queue();
 }
 
++ (bool)initialised; {
+    return initialised;
+}
+
++ (void)setInitialised:(BOOL)value; {
+    initialised = value;
+}
+
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(initTrueTime:(RCTPromiseResolveBlock)resolve
