@@ -29,7 +29,7 @@ RCT_EXPORT_METHOD(initTrueTime:(RCTPromiseResolveBlock)resolve
     // first call wins
     if (initialised == false) {
         // prevent invoking startWithPool again
-        intialiased = true;
+        initialised = true;
         // safe to initialise
         [client startWithPool:@[@"time.apple.com"] port:123];
         // resolve
