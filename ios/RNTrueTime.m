@@ -2,6 +2,8 @@
 
 @import TrueTime;
 
+static bool initialised = false;
+
 @implementation RNTrueTime
 
 - (dispatch_queue_t)methodQueue
@@ -16,25 +18,43 @@ RCT_EXPORT_METHOD(initTrueTime:(RCTPromiseResolveBlock)resolve
 {
     // grab reference to shared true time singleton
     TrueTimeClient *client = [TrueTimeClient sharedInstance];
-    // initialise
-    [client startWithPool:@[@"time.apple.com"] port:123];
-    // resolve
-    resolve(@"");
+    // first call wins
+    if (initialised == false) {
+        // prevent invoking startWithPool again
+        intialiased = true;
+        // safe to initialise
+        [client startWithPool:@[@"time.apple.com"] port:123];
+        // resolve
+        resolve(@"initialised");
+    }
+    else {
+        // resolve
+        resolve(@"already initialised");
+    }
 }
 
 RCT_EXPORT_METHOD(getTrueTime:(RCTPromiseResolveBlock)resolve
                      rejecter:(RCTPromiseRejectBlock)reject)
 {
-    // grab shared ref
+    // grab true time shared instance
     TrueTimeClient *client = [TrueTimeClient sharedInstance];
     // grab true time without fear of user messing with their system clock
-    NSDate *now = [[client referenceTime] now];
-    // milliseconds since epoch
-    long ms = (floor([now timeIntervalSince1970] * 1000));
-    // resolve as a string
-    NSString *msString = [NSString stringWithFormat:@"%f", ms];
-    // resolve the promise
-    resolve(msString);
+    // block waiting for fetch, use the following:-
+    [client fetchIfNeededWithSuccess:^(NTPReferenceTime *referenceTime) {
+      // grab NSDate
+      NSDate *now = [referenceTime now];
+      // milliseconds since epoch
+      long ms = (floor([now timeIntervalSince1970] * 1000));
+      // resolve as a string
+      NSString *msString = [NSString stringWithFormat:@"%ld", ms];
+      // resolve the promise
+      resolve(msString);
+    } failure:^(NSError *error) {
+      // reject with code, message (localized failure (String)) and the NSError itself
+      reject([NSString stringWithFormat:@"%ld", (long)[error code]],
+             [error localizedFailureReason],
+             error);
+    }];
 }
 
 @end

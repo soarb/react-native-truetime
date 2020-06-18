@@ -8,5 +8,6 @@
 
 @interface RNTrueTime : NSObject <RCTBridgeModule>
 
++ (bool)initialised;
+
 @end
-  
