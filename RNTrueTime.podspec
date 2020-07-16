@@ -1,8 +1,11 @@
+require "json"
+
+package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
 Pod::Spec.new do |s|
   s.name         = "RNTrueTime"
-  s.version      = "1.0.0"
-  s.summary      = "RNTrueTime"
+  s.version      = package["version"]
+  s.summary      = package["description"]
   s.homepage     = "https://github.com/soarb/react-native-truetime"
   s.license      = "MIT"
   s.author       = { "author" => "benji@gooii.com" }
