@@ -16,5 +16,3 @@ Pod::Spec.new do |s|
   s.dependency 'React'
   s.dependency 'TrueTime'
 end
-
-  
