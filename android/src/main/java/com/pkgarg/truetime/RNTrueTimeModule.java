@@ -27,23 +27,21 @@ public class RNTrueTimeModule extends ReactContextBaseJavaModule {
     return "RNTrueTime";
   }
 
+  public static void initTrueTime(Context context) throws IOException {
+      TrueTimeSingleton.Instance().initialize(context);
+  }
 
-
-    public static void initTrueTime(Context context) throws IOException {
-        TrueTimeSingleton.Instance().initialize(context);
-    }
-
-    @ReactMethod
-    public void initTrueTime(Promise promise){
-        Context currentActivity = getCurrentActivity();
-        try {
-            initTrueTime(currentActivity);
-        } catch (IOException e) {
-            e.printStackTrace();
-            promise.reject("TRUETIME_INIT_ERR", e);
-            return;
-        }
-        promise.resolve("");
+  @ReactMethod
+  public void initTrueTime(Promise promise) {
+      try {
+          initTrueTime(this.reactContext);
+      }
+      catch (IOException e) {
+          e.printStackTrace();
+          promise.reject("TRUETIME_INIT_ERR", e);
+          return;
+      }
+      promise.resolve("");
     }
 
     /**
@@ -58,6 +56,4 @@ public class RNTrueTimeModule extends ReactContextBaseJavaModule {
         // React Native bridge complains if we try to pass back a long directly
         promise.resolve(Long.toString(time));
     }
-
-
 }
